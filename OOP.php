@@ -19,59 +19,112 @@ class TV
 {
 	public $diagonal;
 	public $DisplayResolution;
-	public function __construct($diagonal, $DisplayResolution)
-	{
-		$this -> diagonal = $diagonal;
-		$this -> DisplayResolution = $DisplayResolution;
-	}
+		public function FullHD()
+		{
+			$diagonal='1080*720';
+			echo $diagonal;
+		}
 }
 
-class Pens
+class Pen
 {
 	public $length;
 	public $corpus;
-	public function __construct($length, $corpus)
-	{
-		$this -> length = $length;
-		$this -> corpus = $corpus;
-	}
+		public function __construct($length, $corpus)
+		{
+			$this->length=$length;
+			$this->corpus=$corpus;
+		}
 }
 
-class Ducks
+class Duck
 {
 	public $country;
 	public $weight;
-	public function __construct($country, $weight)
-	{
-		$this -> country = $country;
-		$this -> weight = $weight;
-	}
+		public function __construct($country, $weight)
+		{
+			$this->country=$country;
+			$this->weight=$weight;
+		}
 }
 
 
-class Products
+class Product
 {
 	public $name;
 	public $price;
-	public function __construct($name, $price)
-	{
-		$this -> name = $name;
-		$this -> price = $price;
-	}
+	public $currency;
+		public function ExchangeRub()
+		{
+			if ($this->currency=='$') {
+				return $this->price*63 .' '. 'RUB';
+			} else {
+				return $this->price .' '. 'RUB';
+			}
+		}
 }
 
 
 $laurel=new Car();
+	echo $laurel->color='green';
+	echo $laurel->power="200hp";
+
 $skyline=new Car();
+	echo $skyline->color='gray';
+	echo $skyline->power='280hp';
+	
 
-$lg=new TV('28см','1280*720');
-$sumsung=new TV('50см','1920*1080');
+$lg=new TV();
+	$lg->FullHD();
 
-$parker=new Pens('15cm','metal');
-$lamy=new Pens('20cm','plastic');
+$samsung=new TV();
+	$samsung->FullHD();
+		echo $samsung->DisplayResolution='2000mm';
 
-$white=new Ducks('Russia','15kg');
-$black=new Ducks('Africa','30kg');
+	
+$parker=new Pen('15cm', 'metal');
+	echo $parker->length;
+	echo $parker->corpus;
 
-$phone=new Products('Huawai', 35000);
-$leptop=new Products('Lenovo', 45000);
+$lamy=new Pen('20cm', 'plastic');
+	echo $lamy->length;
+	echo $lamy->corpus;
+	
+
+$white=new Duck('Russia', '15kg');
+	echo $white->country;
+	echo $white->weight;
+
+$black=new Duck('Africa', '30kg');
+	echo $black->country;
+	echo $black->weight;
+	
+	
+$phone=new Product();
+	echo $phone->name='Huawei';
+	$phone->price=35000;
+	$phone->currency='RUB';
+	echo $phone->ExchangeRub();
+
+$leptop=new Product();
+	echo $phone->name='Lenovo';
+	$phone->price=200;
+	$phone->currency='$';
+	echo $phone->ExchangeRub();
+	
+	
+class news
+{
+	private $sport='Продули матч Россия - Уругвай, со счетом 3-0';
+	private $wind='Во Владике снова туман с дождем, в общем ничего удевительного';
+	private $hotnews='Как нам сообщили на дорогах образовались массовые митинги';
+		public function getPrivateProperty()
+		{
+			echo $this->sport;
+			echo $this->wind;
+			echo $this->hotnews;
+		}
+}
+
+$news=new news();
+$news->getPrivateProperty();
