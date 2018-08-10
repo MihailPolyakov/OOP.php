@@ -13,15 +13,24 @@ class Car
 {
     public $color;
     public $power;
+    public function __construct($color, $power)
+    {
+      $this->color = $color;
+      $this->power = $power;
+    }
 }
 
 class TV
 {
     public $diagonal;
     public $DisplayResolution;
+    public function __construct($DisplayResolution)
+    {
+      $this->DisplayResolution = $DisplayResolution;
+    }
     public function FullHD()
     {
-      $diagonal = '1080*720';
+      $diagonal='1080*720';
       echo $diagonal;
     }
 }
@@ -54,65 +63,63 @@ class Product
     public $name;
     public $price;
     public $currency;
+    public function __construct($name, $price, $currency)
+    {
+      $this->name = $name;
+      $this->price = $price;
+      $this->currency = $currency;	
+    }
     public function ExchangeRub()
     {
-      if ($this->currency == '$') {
-          return $this->price * 63 .' '. 'RUB';
+      if ($this->currency=='$') {
+          return $this->price*63 .' '. 'RUB';
       } else {
-          return $this->price .' '. 'RUB';
+	  return $this->price .' '. 'RUB';
       }
     }
 }
 
 
-$laurel = new Car();
-    echo $laurel->color = 'green';
-    echo $laurel->power = "200hp";
+$laurel=new Car('green', '200hp');
+echo $laurel->color;
+echo $laurel->power;
 
-$skyline = new Car();
-    echo $skyline->color = 'gray';
-    echo $skyline->power = '280hp';
+$skyline=new Car('gray', '289hp');
+echo $skyline->color;
+echo $skyline->power;
 	
+$lg=new TV('1000mm');
+$lg->FullHD();
+echo $lg->DisplayResolution;
 
-$lg = new TV();
-    $lg->FullHD();
-
-$samsung = new TV();
-    $samsung->FullHD();
-    echo $samsung->DisplayResolution = '2000mm';
-
+$samsung=new TV('2000mm');
+$samsung->FullHD();
+echo $samsung->DisplayResolution;
 	
 $parker = new Pen('15cm', 'metal');
-    echo $parker->length;
-    echo $parker->corpus;
+echo $parker->length;
+echo $parker->corpus;
 
 $lamy = new Pen('20cm', 'plastic');
-    echo $lamy->length;
-    echo $lamy->corpus;
+echo $lamy->length;
+echo $lamy->corpus;
 	
-
 $white = new Duck('Russia', '15kg');
-    echo $white->country;
-    echo $white->weight;
+echo $white->country;
+echo $white->weight;
 
 $black = new Duck('Africa', '30kg');
-    echo $black->country;
-    echo $black->weight;
-	
-	
-$phone = new Product();
-    echo $phone->name = 'Huawei';
-    $phone->price = 35000;
-    $phone->currency = 'RUB';
-    echo $phone->ExchangeRub();
+echo $black->country;
+echo $black->weight;
+		
+$phone=new Product('Huawei', 35000, 'RUB');
+echo $phone->name;
+echo $phone->ExchangeRub();
 
-$leptop = new Product();
-    echo $phone->name = 'Lenovo';
-    $phone->price = 200;
-    $phone->currency = '$';
-    echo $phone->ExchangeRub();
-	
-	
+$leptop=new Product('Lenovo', 200, '$');
+echo $leptop->name;
+echo $leptop->ExchangeRub();
+		
 class news
 {
     private $sport = 'Продули матч Россия - Уругвай, со счетом 3-0';
